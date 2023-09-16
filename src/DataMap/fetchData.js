@@ -11,7 +11,11 @@ export const fetchAlbertHeijnStores = async () => {
     `;
 
     try {
-        const response = await axios.post(overpassUrl, { data: query });
+        const response = await axios.post(overpassUrl, query, {
+            headers: {
+                'Content-Type': 'text/plain;charset=UTF-8',
+            },
+        });
         return response.data.elements;
     } catch (error) {
         console.error("Error fetching Albert Heijn stores:", error);

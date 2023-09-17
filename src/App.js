@@ -14,7 +14,24 @@ function App() {
         fetchData();
     }, []);
 
-    return <AlbertHeijnMap stores={stores} />;
+    const toggleMachineStatus = (storeId) => {
+        const updatedStores = stores.map(store => {
+            if (store.id === storeId) {
+                return {
+                    ...store,
+                    isMachineBroken: !store.isMachineBroken
+                };
+            }
+            return store;
+        });
+        setStores(updatedStores);
+    };
+
+    return (
+        <div className="map-wrapper">
+        <AlbertHeijnMap stores={stores} toggleMachineStatus={toggleMachineStatus} />
+        </div>
+    );
 }
 
 export default App;

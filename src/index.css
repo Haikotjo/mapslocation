@@ -1,5 +1,14 @@
 @import "~leaflet/dist/leaflet.css";
 
+#root {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
@@ -8,6 +17,9 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.map-wrapper {
+  height: 100%;
 }
 
 /*.leaflet-container .leaflet-marker-icon {*/

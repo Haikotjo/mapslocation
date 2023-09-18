@@ -1,0 +1,30 @@
+
+img {
+    width: 50px;
+    height: auto;
+    /*padding: 20px;*/
+}
+
+.map-wrapper {
+    position: relative;
+}
+
+.button-container {
+    position: absolute;
+    right: 0;
+    top:20%; /* Je kunt deze waarde aanpassen om de verticale positie van de buttons te veranderen */
+    background-color: rgba(255, 255, 255, 0.4); /* Doorschijnend wit */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Zorgt ervoor dat de container boven de kaart ligt */
+}
+
+.button-supermarket {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: none;
+    display: block;
+    margin-bottom: 10px; /* Ruimte tussen de buttons */
+    /* Andere stijlen die je wilt toevoegen */
+    border: none;
+}

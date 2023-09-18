@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import { fetchAlbertHeijnStores } from './DataMap/fetchData';
+import {fetchSupermarketStores} from './DataMap/fetchData';
 import AlbertHeijnMap from './Components/AlbertHeijnMap';
 import Admin from "./Pages/Admin";
 import SupermarketButton from './Components/SupermarketButton';
@@ -9,14 +9,14 @@ import SupermarketButton from './Components/SupermarketButton';
 function App() {
     const [stores, setStores] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await fetchAlbertHeijnStores();
-            setStores(data);
-        };
-
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const data = await fetchAlbertHeijnStores();
+    //         setStores(data);
+    //     };
+    //
+    //     fetchData();
+    // }, []);
 
     const toggleMachineStatus = (storeId) => {
         const updatedStores = stores.map(store => {
@@ -32,9 +32,14 @@ function App() {
     };
 
     function handleSupermarketClick(supermarket) {
-        // Hier kun je de fetch functie aanroepen om data voor de geklikte supermarkt op te halen
-        // fetchSupermarketStores(supermarket);
+        const fetchDataForSupermarket = async () => {
+            const data = await fetchSupermarketStores(supermarket);
+            setStores(data);
+        };
+
+        fetchDataForSupermarket();
     }
+
 
     return (
         <Router>
@@ -43,25 +48,25 @@ function App() {
                     <SupermarketButton
                         className="button-supermarket"
                         iconPath="/images/albert-heijn.png"
-                        supermarket="albert-heijn"
+                        supermarket="Albert Heijn"
                         onClick={handleSupermarketClick}
                     />
                     <SupermarketButton
                         className="button-supermarket"
                         iconPath="/images/Aldi.png"
-                        supermarket="albert-heijn"
+                        supermarket="ALDI"
                         onClick={handleSupermarketClick}
                     />
                     <SupermarketButton
                         className="button-supermarket"
                         iconPath="/images/dirk.png"
-                        supermarket="albert-heijn"
+                        supermarket="Dirk"
                         onClick={handleSupermarketClick}
                     />
                     <SupermarketButton
                         className="button-supermarket"
                         iconPath="/images/Jumbo.png"
-                        supermarket="albert-heijn"
+                        supermarket="Jumbo"
                         onClick={handleSupermarketClick}
                     />
                 </div>

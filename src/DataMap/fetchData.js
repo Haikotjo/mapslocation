@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const overpassUrl = 'https://overpass-api.de/api/interpreter';
 
-export const fetchAlbertHeijnStores = async () => {
+export const fetchSupermarketStores = async (supermarketBrand) => {
     const query = `
         [out:json];
         area["name"="Nederland"]->.searchArea;
-        node["shop"="supermarket"]["brand"="Albert Heijn"](area.searchArea);
+        node["shop"="supermarket"]["brand"="${supermarketBrand}"](area.searchArea);
         out;
     `;
 
@@ -18,7 +18,7 @@ export const fetchAlbertHeijnStores = async () => {
         });
         return response.data.elements;
     } catch (error) {
-        console.error("Error fetching Albert Heijn stores:", error);
+        console.error(`Error fetching ${supermarketBrand} stores:`, error);
         return [];
     }
 };
